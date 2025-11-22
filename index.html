@@ -1,145 +1,89 @@
-<!DOCTYPE html>
-<html lang="en" class="theme-coral-drift">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Raizer — Find, compare, and buy cars</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Daot — Boats, Beauty, and the Blue</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <style>
-    /* Ocean background animation */
-    body {
-      margin:0;
-      font-family:Inter,sans-serif;
-      color:#eaf6ff;
-      background:linear-gradient(180deg,#04182a,#0a3d5c,#1a7fa3,#3cc1ff);
-      background-size:400% 400%;
-      animation:oceanFlow 30s ease infinite;
+  <meta name="description" content="Raizer helps you find, compare, and buy cars. Explore listings, specs, reviews, and calculators." />
+  <link rel="preload" href="/css/main.css" as="style" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/neon.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0c0f14" />
+  <!-- Schema.org/JSON-LD example for homepage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Raizer",
+    "url":"https://example.com",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://example.com/#/listings?query={search_term_string}",
+      "query-input":"required name=search_term_string"
     }
-    @keyframes oceanFlow {
-      0%{background-position:0% 50%;}
-      50%{background-position:100% 50%;}
-      100%{background-position:0% 50%;}
-    }
-
-    .hero { position:relative; height:300px; overflow:hidden; }
-    .ocean { position:absolute; bottom:0; width:100%; height:120px; overflow:hidden; }
-    .wave {
-      position:absolute; width:200%; height:100%;
-      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="320"><path fill="%233cc1ff" fill-opacity="0.6" d="M0,160L60,170C120,180,240,200,360,192C480,184,600,148,720,160C840,172,960,234,1080,250C1200,266,1320,238,1380,224L1440,210L1440,320L0,320Z"></path></svg>') repeat-x;
-      background-size:50% 100%;
-      animation:waveMove 8s linear infinite;
-    }
-    .wave:nth-child(2){opacity:0.5;animation-duration:12s;}
-    @keyframes waveMove { from{transform:translateX(0);} to{transform:translateX(-50%);} }
-
-    /* Animated logo rising */
-    .logo {
-      position:absolute; bottom:-80px; left:50%; transform:translateX(-50%);
-      display:flex; align-items:center; gap:14px;
-      animation:riseUp 3s ease-out forwards;
-    }
-    .logo-badge {
-      width:60px; height:60px; border-radius:50%;
-      background:linear-gradient(135deg,#3cc1ff,#69f0d2);
-      box-shadow:0 0 20px rgba(60,193,255,0.6);
-    }
-    .logo h1 {
-      font-family:"Playfair Display",serif;
-      font-size:48px; color:#eaf6ff;
-      text-shadow:0 4px 12px rgba(0,0,0,0.4);
-    }
-    @keyframes riseUp {
-      0%{bottom:-80px;opacity:0;}
-      60%{bottom:40px;opacity:1;}
-      80%{bottom:30px;}
-      100%{bottom:40px;}
-    }
-
-    /* Card styling with glassmorphism */
-    .section { padding:60px 24px; }
-    .shell { max-width:1200px; margin:0 auto; }
-    .card {
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.2);
-      border-radius:20px;
-      padding:24px;
-      margin-bottom:20px;
-      box-shadow:0 8px 30px rgba(0,0,0,0.4);
-    }
-
-    /* Theme switcher */
-    .themes { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
-    .theme-btn {
-      border:0; border-radius:12px; padding:10px;
-      cursor:pointer; font-weight:700;
-      background:linear-gradient(135deg,#3cc1ff,#69f0d2);
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .theme-btn:hover { transform:scale(1.05); box-shadow:0 0 20px #3cc1ff; }
-
-    /* Newsletter form */
-    form input { padding:10px; border-radius:8px; border:none; margin-right:10px; }
-    form button { padding:10px 16px; border:none; border-radius:8px; background:#3cc1ff; color:#042033; font-weight:700; }
-  </style>
+  }
+  </script>
 </head>
-<body>
-  <header class="hero">
-    <div class="ocean">
-      <div class="wave"></div>
-      <div class="wave"></div>
-    </div>
+<body class="theme-dark">
+  <header class="app-header">
     <div class="logo">
-      <div class="logo-badge"></div>
-      <h1>Daot</h1>
+      <img src="/assets/logos/raizer.svg" alt="Raizer" />
+      <span>Raizer</span>
+    </div>
+    <nav class="nav">
+      <a href="#/">Home</a>
+      <a href="#/listings">Cars</a>
+      <a href="#/compare">Compare</a>
+      <a href="#/news">News & Reviews</a>
+      <a href="#/tools">Tools</a>
+      <a href="#/seller">Sell</a>
+      <a href="#/account">Account</a>
+      <a href="#/contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeToggle" class="btn-icon" aria-label="Toggle theme">
+        <svg><use href="/assets/icons/moon.svg#icon"/></svg>
+      </button>
+      <button id="liveChatToggle" class="btn">Live chat</button>
     </div>
   </header>
 
-  <main>
-    <!-- Boat of the Week -->
-    <section id="boat-week" class="section shell">
-      <h2>🚤 Boat of the Week</h2>
-      <div class="card">
-        <img src="assets/images/boat-week.webp" alt="Axopar 25 close-up" style="width:100%;border-radius:12px;" />
-        <h3>2023 Axopar 25</h3>
-        <p>A compact 7.62m adventure powerboat with sharp strakes and a dry ride.<br><strong>Price:</strong> €131,912</p>
+  <main id="app"></main>
+
+  <footer class="app-footer">
+    <div class="grid">
+      <div>
+        <h4>Raizer</h4>
+        <p>Find, compare, and buy cars with confidence.</p>
       </div>
-    </section>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#/listings?new=true">New Cars</a></li>
+          <li><a href="#/listings?used=true">Used Cars</a></li>
+          <li><a href="#/compare">Compare Cars</a></li>
+          <li><a href="#/news">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#/contact">Contact</a></li>
+          <li><a href="#/contact#test-drive">Book Test Drive</a></li>
+          <li><a href="#/account">My Account</a></li>
+        </ul>
+      </div>
+    </div>
+    <small>© <span id="year"></span> Raizer. All rights reserved.</small>
+  </footer>
 
-    <!-- Affordable Boats -->
-    <section id="cheap-boats" class="section shell">
-      <h2>💸 Affordable Boat Options</h2>
-      <div class="card"><h3>Fiberglass Fishing Boat — ₱650,000</h3><p>Reliable mid-size hull for nearshore nets and handlines.</p></div>
-      <div class="card"><h3>Pumpboat with Fishing Net — ₱300,000</h3><p>Traditional outrigger banca, net-ready for reef fishing.</p></div>
-      <div class="card"><h3>Catamaran (20 people) — ₱600,000</h3><p>Stable twin-hull vessel for island-hopping tours.</p></div>
-      <div class="card"><h3>Pioneer Bri-Yak Kayak — ₱600</h3><p>Budget tandem kayak for lakes and calm estuaries.</p></div>
-    </section>
-
-    <!-- Luxury Boats -->
-    <section id="luxury-boats" class="section shell">
-      <h2>💎 Luxury & Superyachts</h2>
-      <div class="card"><h3>Lionheart (Benetti)</h3><p>Italian-built superyacht, 207 ft.<br><strong>Price:</strong> $150 Million</p></div>
-      <div class="card"><h3>Luna (Lloyd Werft)</h3><p>114.2m expedition yacht.<br><strong>Price:</strong> €270 Million</p></div>
-      <div class="card"><h3>Princess 23M (2005)</h3><p>Classic flybridge yacht.<br><strong>Price:</strong> $980,000</p></div>
-      <div class="card"><h3>Lagoon 46 (2024)</h3><p>Modern sailing catamaran.<br><strong>Price:</strong> On request</p></div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery" class="section shell">
-      <h2>📷 Close-up Boat Gallery</h2>
-      <div class="card"><img src="assets/images/bow-detail.webp" alt="Yacht bow close-up" style="width:100%;border-radius:12px;" /><p>Bow lines and spray geometry.</p></div>
-      <div class="card"><img src="assets/images/teak-deck.webp" alt="Teak deck close-up" style="width:100%;border-radius:12px;" /><p>Teak, steel, sun — deck beauty.</p></div>
-    </section>
-
-    <!-- Newsletter -->
-    <section id="newsletter" class="section shell">
-      <h2>📬 Subscribe to Daot Newsletter</h2>
-      <form>
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
-      </form>
-    </section>
-
-    <!-- Theme Switcher -->
-    <section id="themes" class="section shell">
-      <h2>🎨 Switch Style — 15
+  <script src="/js/router.js" defer></script>
+  <script src="/js/store.js" defer></script>
+  <script src="/js/data.js" defer></script>
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>
